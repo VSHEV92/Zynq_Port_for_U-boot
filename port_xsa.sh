@@ -13,6 +13,8 @@
 # --------------------------------------------------------------------
 
 # --------------------------------------------------------------------
+# разбор параметров
+# --------------------------------------------------------------------
 # проверяем, что правильно ли указана дирректория с U-Boot
 cd $1
 if [ -z "`git tag | grep xlnx`" ]; then
@@ -73,3 +75,37 @@ else
     echo "Port for ZynqMP"
 fi
 # --------------------------------------------------------------------
+
+# --------------------------------------------------------------------
+# клонирование репозиториев xlnx-dt и dtc
+# --------------------------------------------------------------------
+# далее все файлы будут помещены в дирректорию с xsa-файлом
+xsa_dir="$(dirname "${xsa_file}")"
+cd $xsa_dir
+
+# клонирование Device Tree generator plugin for xsdk 
+if [ -z "`ls device-tree-xlnx`" ]; then
+    git clone https://github.com/Xilinx/device-tree-xlnx.git
+fi
+
+# клонирование Device Tree compiler
+if [ -z "`ls dtc`" ]; then
+    git clone https://git.kernel.org/pub/scm/utils/dtc/dtc.git
+fi
+
+# генерация дерева устройств
+rm -Rf dt
+mkdir dt
+cd -
+
+# сгенерировать дерево устройств
+echo "Start device tree generation"
+xsct -eval "source build_dts.tcl; build_dts $xsa_file $xsa_dir"
+echo "Device device tree generation done"
+
+# добавить в дерево узлы из dtsi-файла
+if [ -n "$dtsi_file" ]; then
+    echo "Adding user dtsi"
+    xsct -eval "source build_dts.tcl; include_dtsi $dtsi_file $xsa_dir"
+    echo "Add user dtsi done"
+fi
