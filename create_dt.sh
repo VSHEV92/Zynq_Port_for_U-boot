@@ -18,7 +18,6 @@ if [ -z "`ls $1`" ] || [ -z "$1" ]; then
     echo "Bad Vivado xsa-file"
     exit 1
 fi
-xsa_dir="$(dirname "${1}")"
 xsa_file="$(basename "${1}")"
 rm -Rf xsa
 mkdir xsa

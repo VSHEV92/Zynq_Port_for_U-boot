@@ -26,7 +26,7 @@ proc include_dtsi {dtsi_file} {
 		set fp [open dt/system-top.dts r]
 		set file_data [read $fp]
 		close $fp
-		set fileId [open dt/system-top-user.dts "w"]
+		set fileId [open dt/system-top.dts "w"]
 		set data [split $file_data "\n"]
 		foreach line $data {
 		     puts $fileId $line

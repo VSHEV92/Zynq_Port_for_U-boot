@@ -9,5 +9,7 @@
 };
 
 &usb0 {
+     phy_type = "ulpi";
      usb-phy = <&usb_phy0>;
-}
+	usb-reset = <&gpio0 46 0>;
+};
