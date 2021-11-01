@@ -14,10 +14,10 @@
 
 Команды Makefile:
 
-- **create_dt** - создать device tree из xsa-файла;
+- **create_dt** - создание device tree из xsa-файла;
 - **complie_dt** - компиляция device tree;
 - **patch_uboot** - создание  defconfig для uboot;
-- **all** - выполнить все действия;
+- **all** - добавление устройства в U-Boot;
 - **clean** - очистка директории;
 - **clean_full** - очистка директории с удалением скачанных репозиториев.
 
@@ -27,7 +27,7 @@
 
 #### Пример для Zynq.
 
-В папке **zynq_example** расположены файл **pynq_z1.xsa** с описанием платформы для платы PYNQ-Z1 и файл **usb_phy.dtsi**, добавляющий в дерево устройств физику usb-контроллера. 
+В папке **zynq_example** расположен файл **pynq_z1.xsa** с описанием платформы для платы PYNQ-Z1 и файл **usb_phy.dtsi**, добавляющий в дерево устройств физику usb-контроллера. 
 
 Для запуска примера требуется:
 
@@ -36,7 +36,7 @@
    - **export DTSI_FILE=zynq_example/usb_phy.dtsi**
    - **export UBOOT_DIR="директория с U-Boot"**
 
-2. Выполнить команды **make**.
+2. Выполнить команду **make**.
 3. Задать переменные оболочки для U-Boot:
    - **export CROSS_COMPILE=arm-linux-gnueabihf-**
    - **export ARCH=arm**
@@ -51,7 +51,7 @@
 
 #### Пример для Zynq MP.
 
-В папке **zynqmp_example** расположены файл **zcu_102.xsa** с описанием платформы для платы ZynqMP ZCU102 и файл **gpio_led.dtsi**, добавляющий в дерево устройств узел, указывающий на светодиод на ножке ps gpio. 
+В папке **zynqmp_example** расположен файл **zcu_102.xsa** с описанием платформы для платы ZCU102 и файл **gpio_led.dtsi**, который добавляет в дерево устройств узел, указывающий на светодиод на ножке ps gpio. 
 
 Для запуска примера требуется:
 
@@ -60,7 +60,7 @@
    - **export DTSI_FILE=zynqmp_example/gpio_led.dtsi**
    - **export UBOOT_DIR="директория с U-Boot"**
 
-2. Выполнить команды **make**.
+2. Выполнить команду **make**.
 3. Задать переменные оболочки для U-Boot:
    - **export CROSS_COMPILE=aarch64-linux-gnu-**
    - **export ARCH=aarch64**
