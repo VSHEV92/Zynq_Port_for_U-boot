@@ -32,9 +32,9 @@
 Для запуска примера требуется:
 
 1.  Задать переменные оболочки:
-   - **export XSA_FILE=zynq_example/pynq_zq.xsa**
+   - **export XSA_FILE=zynq_example/pynq_z1.xsa**
    - **export DTSI_FILE=zynq_example/usb_phy.dtsi**
-   - **export XSA_FILE="директория с U-Boot"**
+   - **export UBOOT_DIR="директория с U-Boot"**
 
 2. Выполнить команды **make**.
 3. Задать переменные оболочки для U-Boot:
@@ -44,6 +44,30 @@
 4. Перейти в директорию U-Boot и выполнить следующие команды:
 
    **make pynq_z1_defconfig**
+
+   **make**
+
+------
+
+#### Пример для Zynq MP.
+
+В папке **zynqmp_example** расположены файл **zcu_102.xsa** с описанием платформы для платы ZynqMP ZCU102 и файл **gpio_led.dtsi**, добавляющий в дерево устройств узел, указывающий на светодиод на ножке ps gpio. 
+
+Для запуска примера требуется:
+
+1.  Задать переменные оболочки:
+   - **export XSA_FILE=zynqmp_example/zcu_102.xsa**
+   - **export DTSI_FILE=zynqmp_example/gpio_led.dtsi**
+   - **export UBOOT_DIR="директория с U-Boot"**
+
+2. Выполнить команды **make**.
+3. Задать переменные оболочки для U-Boot:
+   - **export CROSS_COMPILE=aarch64-linux-gnu-**
+   - **export ARCH=aarch64**
+
+4. Перейти в директорию U-Boot и выполнить следующие команды:
+
+   **make zcu_102_defconfig**
 
    **make**
 
