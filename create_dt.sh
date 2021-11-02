@@ -56,7 +56,7 @@ fi
 
 # клонирование Device Tree compiler
 if [ -z "`ls dtc`" ]; then
-    git clone https://git.kernel.org/pub/scm/utils/dtc/dtc.git
+    git clone git://git.kernel.org/pub/scm/utils/dtc/dtc.git
     cd dtc
     make -j `nproc`
     cd -

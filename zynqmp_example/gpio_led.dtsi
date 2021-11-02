@@ -1,0 +1,10 @@
+/ {
+	leds {
+		compatible = "gpio-leds";
+		heartbeat-led {
+			label = "heartbeat";
+			gpios = <&gpio 23 0>;
+			linux,default-trigger = "heartbeat";
+		};
+	};
+};
